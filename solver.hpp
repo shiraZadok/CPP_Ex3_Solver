@@ -51,7 +51,6 @@ public:
     friend ComplexVariable operator/ (const ComplexVariable& ,const ComplexVariable&);
     friend ComplexVariable operator- (const ComplexVariable& ,const ComplexVariable&);
     friend ComplexVariable operator^ (const ComplexVariable& , double a);
-//    friend ComplexVariable operator+ (ComplexVariable& a, complex<double> b);
     friend ComplexVariable operator== (const ComplexVariable& c1,const ComplexVariable& c2);
 
     friend ostream& operator<< (ostream& os, const ComplexVariable& r) {
