@@ -38,6 +38,8 @@ RealVariable solver::operator== (const RealVariable& r1,const RealVariable& r2){
     return RealVariable(r1-r2);
 }
 
+///////////////////////////////////////////////COMPLEX///////////////////////////////////////////////
+
 ComplexVariable solver::operator+ (const ComplexVariable& c1, const ComplexVariable& c2){
     return ComplexVariable(c1._a+c2._a,c1._b+c2._b,c1._c+c2._c);
 }
