@@ -6,17 +6,11 @@ using namespace solver;
 using namespace std;
 
 RealVariable solver::operator+ (const RealVariable& r1, const RealVariable& r2){
-    return RealVariable(
-            (r1._a!=0 && r2._a!=0) ?r1._a+r2._a: (r1._a!=0 ? r1._a:r2._a),
-            (r1._b!=0 && r2._b!=0) ?r1._b+r2._b:(r1._b!=0 ? r1._b:r2._b),
-            r1._c+r2._c);
+    return RealVariable(r1._a+r2._a,r1._b+r2._b,r1._c+r2._c);
 }
 
 RealVariable solver::operator- (const RealVariable& r1,const RealVariable& r2){
-    return RealVariable(
-            (r1._a!=0 && r2._a!=0) ?r1._a-r2._a: (r1._a!=0 ? r1._a:-r2._a),
-            (r1._b!=0 && r2._b!=0) ?r1._b-r2._b:(r1._b!=0 ? r1._b:-r2._b),
-            r1._c-r2._c);
+    return RealVariable(r1._a-r2._a,r1._b-r2._b,r1._c-r2._c);
 }
 
 RealVariable solver::operator/ (const RealVariable& r1, const RealVariable& r2){
@@ -40,11 +34,15 @@ RealVariable solver::operator^ (const RealVariable& r, double d){
     return RealVariable(pow(r._b,d),(2*r._b*r._c),pow(r._c,2));
 }
 
+//ComplexVariable solver::operator+ (ComplexVariable& c1, complex<double> c2){
+//    return ComplexVariable(c1._a,c1._b,c1._c+c2);}
+
 ComplexVariable solver::operator+ (const ComplexVariable& c1, const ComplexVariable& c2){
-    return ComplexVariable(
-            (c1._a!=ZERO_COMPLEX && c2._a!=ZERO_COMPLEX) ?c1._a+c2._a: (c1._a!=ZERO_COMPLEX ? c1._a:c2._a),
-            (c1._b!=ZERO_COMPLEX && c2._b!=ZERO_COMPLEX) ?c1._b+c2._b:(c1._b!=ZERO_COMPLEX ? c1._b:c2._b),
-            c1._c+c2._c);
+    return ComplexVariable(c1._a+c2._a,c1._b+c2._b,c1._c+c2._c);
+}
+
+ComplexVariable solver::operator- (const ComplexVariable& c1, const ComplexVariable& c2){
+    return ComplexVariable(c1._a-c2._a,c1._b-c2._b,c1._c-c2._c);
 }
 
 ComplexVariable solver::operator^ (const ComplexVariable& c, double d){
@@ -69,13 +67,6 @@ ComplexVariable solver::operator/ (const ComplexVariable& c1, const ComplexVaria
     return ComplexVariable(c1._a/c2._c,c1._b/c2._c,c1._c/c2._c);
 }
 
-ComplexVariable solver::operator- (const ComplexVariable& c1, const ComplexVariable& c2){
-    return ComplexVariable(
-            (c1._a!=ZERO_COMPLEX && c2._a!=ZERO_COMPLEX) ?c1._a-c2._a: (c1._a!=ZERO_COMPLEX ? c1._a:-c2._a),
-            (c1._b!=ZERO_COMPLEX && c2._b!=ZERO_COMPLEX) ?c1._b-c2._b:(c1._b!=ZERO_COMPLEX ? c1._b:-c2._b),
-            c1._c-c2._c);
-}
-
 double solver::solve(RealVariable r) {
     if (r._a==0&&r._b==0) throw runtime_error("ERROR: There is no solution");
     if (r._a != 0){
@@ -85,7 +76,6 @@ double solver::solve(RealVariable r) {
     }
     else return (-r._c)/r._b;
 }
-
 complex<double> solver::solve(ComplexVariable c){
     if (c._a==ZERO_COMPLEX&&c._b==ZERO_COMPLEX) throw runtime_error("ERROR: There is no solution");
     if (c._a != ZERO_COMPLEX){

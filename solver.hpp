@@ -57,7 +57,7 @@ public:
     friend ComplexVariable operator/ (const ComplexVariable& ,const ComplexVariable&);
     friend ComplexVariable operator- (const ComplexVariable& ,const ComplexVariable&);
     friend ComplexVariable operator^ (const ComplexVariable& , double a);
-    
+//    friend ComplexVariable operator+ (ComplexVariable& a, complex<double> b);
     ComplexVariable operator== (const ComplexVariable& c2){
         return ComplexVariable(
         (this->_a!=ZERO_COMPLEX && c2._a!=ZERO_COMPLEX) ?this->_a-c2._a : (c2._a!=ZERO_COMPLEX ? -c2._a:this->_a),
@@ -71,3 +71,5 @@ public:
     }
     friend complex<double> solve(ComplexVariable c);
 };
+
+
