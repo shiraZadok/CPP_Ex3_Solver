@@ -71,5 +71,3 @@ public:
     }
     friend complex<double> solve(ComplexVariable c);
 };
-
-
