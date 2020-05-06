@@ -40,15 +40,13 @@ RealVariable solver::operator^ (const RealVariable& r, double d){
     return RealVariable(pow(r._b,d),(2*r._b*r._c),pow(r._c,2));
 }
 
-//ComplexVariable solver::operator+ (ComplexVariable& c1, complex<double> c2){
-//    return ComplexVariable(c1._a,c1._b,c1._c+c2);}
-
 ComplexVariable solver::operator+ (const ComplexVariable& c1, const ComplexVariable& c2){
     return ComplexVariable(
             (c1._a!=ZERO_COMPLEX && c2._a!=ZERO_COMPLEX) ?c1._a+c2._a: (c1._a!=ZERO_COMPLEX ? c1._a:c2._a),
             (c1._b!=ZERO_COMPLEX && c2._b!=ZERO_COMPLEX) ?c1._b+c2._b:(c1._b!=ZERO_COMPLEX ? c1._b:c2._b),
             c1._c+c2._c);
 }
+
 ComplexVariable solver::operator^ (const ComplexVariable& c, double d){
     if((d>2 && c._b!=ZERO_COMPLEX) || (d>=2&&c._a!=ZERO_COMPLEX) || d==0)
         throw runtime_error("ERROR: The power of the quadratic equation are more then 2");
@@ -87,11 +85,12 @@ double solver::solve(RealVariable r) {
     }
     else return (-r._c)/r._b;
 }
+
 complex<double> solver::solve(ComplexVariable c){
     if (c._a==ZERO_COMPLEX&&c._b==ZERO_COMPLEX) throw runtime_error("ERROR: There is no solution");
     if (c._a != ZERO_COMPLEX){
         complex<double> discriminant = sqrt(pow(c._b, 2) - 4.0 * c._a * c._c);
         return (-c._b + discriminant) / (2.0 * c._a);
     }
-    else return (-c._c)/c._b;
+    return (-c._c)/c._b;
 }
