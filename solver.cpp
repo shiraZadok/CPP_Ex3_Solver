@@ -38,6 +38,16 @@ RealVariable solver::operator== (const RealVariable& r1,const RealVariable& r2){
     return RealVariable(r1-r2);
 }
 
+double solver::solve(RealVariable r) {
+    if (r._a==0&&r._b==0) throw runtime_error("ERROR: There is no solution");
+    if (r._a != 0){
+        double discriminant = pow(r._b, 2) - 4 * r._a * r._c;
+        if (discriminant < 0) throw runtime_error("ERROR: There is no real solution");
+        else return (-r._b + sqrt(discriminant)) / (2 * r._a);
+    }
+    else return (-r._c)/r._b;
+}
+
 ///////////////////////////////////////////////COMPLEX///////////////////////////////////////////////
 
 ComplexVariable solver::operator+ (const ComplexVariable& c1, const ComplexVariable& c2){
@@ -72,16 +82,6 @@ ComplexVariable solver::operator^ (const ComplexVariable& c, double d){
 
 ComplexVariable solver::operator== (const ComplexVariable& c1,const ComplexVariable& c2){
     return ComplexVariable(c1-c2);
-}
-
-double solver::solve(RealVariable r) {
-    if (r._a==0&&r._b==0) throw runtime_error("ERROR: There is no solution");
-    if (r._a != 0){
-        double discriminant = pow(r._b, 2) - 4 * r._a * r._c;
-        if (discriminant < 0) throw runtime_error("ERROR: There is no real solution");
-        else return (-r._b + sqrt(discriminant)) / (2 * r._a);
-    }
-    else return (-r._c)/r._b;
 }
 
 complex<double> solver::solve(ComplexVariable c){
