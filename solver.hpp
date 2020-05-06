@@ -47,16 +47,16 @@ class solver::ComplexVariable{
     complex<double> _a,_b,_c;
 public:
     //Constructors & explicit
-    ComplexVariable():_a(0),_b(1,0),_c(0){}
-    ComplexVariable (double& d):ComplexVariable(complex<double>(d,0)){}
+    ComplexVariable ():_a(0),_b(1,0),_c(0){}
+    ComplexVariable (double d):ComplexVariable(complex<double>(d,0)){}
     ComplexVariable (const complex<double>& d):_a(0),_b(0),_c(d){}
     ComplexVariable (const complex<double>& a,const complex<double>& b,const complex<double>& c):_a(a),_b(b),_c(c){}
 
-    friend ComplexVariable operator+ (const ComplexVariable& a,const ComplexVariable& b);
-    friend ComplexVariable operator* (const ComplexVariable& a, const ComplexVariable& b);
-    friend ComplexVariable operator/ (const ComplexVariable& a,const ComplexVariable& b);
-    friend ComplexVariable operator- (const ComplexVariable& a,const ComplexVariable& b);
-    friend ComplexVariable operator^ (const ComplexVariable& f, double a);
+    friend ComplexVariable operator+ (const ComplexVariable& ,const ComplexVariable&);
+    friend ComplexVariable operator* (const ComplexVariable& ,const ComplexVariable&);
+    friend ComplexVariable operator/ (const ComplexVariable& ,const ComplexVariable&);
+    friend ComplexVariable operator- (const ComplexVariable& ,const ComplexVariable&);
+    friend ComplexVariable operator^ (const ComplexVariable& , double a);
 //    friend ComplexVariable operator+ (ComplexVariable& a, complex<double> b);
     ComplexVariable operator== (const ComplexVariable& c2){
         return ComplexVariable(
@@ -69,7 +69,6 @@ public:
         os << r._a << "x^2+" << r._b << "x+" << r._c;
         return os;
     }
-
     friend complex<double> solve(ComplexVariable c);
 };
 
