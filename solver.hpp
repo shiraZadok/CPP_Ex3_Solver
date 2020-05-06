@@ -28,13 +28,7 @@ public:
     friend RealVariable operator/ (const RealVariable&, const RealVariable&);
     friend RealVariable operator* (const RealVariable&, const RealVariable&);
     friend RealVariable operator^ (const RealVariable&, double);
-
-    RealVariable operator== (const RealVariable& r2){
-        return RealVariable(
-        (this->_a!=0 && r2._a!=0) ?this->_a-r2._a : (r2._a!=0 ? -r2._a:this->_a),
-        (this->_b!=0 && r2._b!=0) ? this->_b-r2._b : (r2._b!=0 ? -r2._b:this->_b),
-        this->_c-r2._c);
-    }
+    friend RealVariable operator== (const RealVariable& r1,const RealVariable& r2);
 
      friend ostream& operator<< (ostream& os, const RealVariable& r) {
          os << r._a << "x^2+" << r._b << "x+" << r._c;
@@ -58,12 +52,7 @@ public:
     friend ComplexVariable operator- (const ComplexVariable& ,const ComplexVariable&);
     friend ComplexVariable operator^ (const ComplexVariable& , double a);
 //    friend ComplexVariable operator+ (ComplexVariable& a, complex<double> b);
-    ComplexVariable operator== (const ComplexVariable& c2){
-        return ComplexVariable(
-        (this->_a!=ZERO_COMPLEX && c2._a!=ZERO_COMPLEX) ?this->_a-c2._a : (c2._a!=ZERO_COMPLEX ? -c2._a:this->_a),
-        (this->_b!=ZERO_COMPLEX && c2._b!=ZERO_COMPLEX) ? this->_b-c2._b : (c2._b!=ZERO_COMPLEX ? -c2._b:this->_b),
-        this->_c-c2._c);
-    }
+    friend ComplexVariable operator== (const ComplexVariable& c1,const ComplexVariable& c2);
 
     friend ostream& operator<< (ostream& os, const ComplexVariable& r) {
         os << r._a << "x^2+" << r._b << "x+" << r._c;
@@ -71,5 +60,3 @@ public:
     }
     friend complex<double> solve(ComplexVariable c);
 };
-
-
