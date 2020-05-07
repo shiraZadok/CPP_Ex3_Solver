@@ -14,7 +14,7 @@ RealVariable solver::operator- (const RealVariable& r1,const RealVariable& r2){
 }
 
 RealVariable solver::operator/ (const RealVariable& r1, const RealVariable& r2){
-    if(r2._a==0 && r2._c==0 && r2._b==0) throw runtime_error("Must not divide by 0");
+    if(r2._a==0 && r2._c==0 && r2._b==0) throw runtime_error("ERROR: Must not divide by 0");
     return RealVariable(r1._a/r2._c,r1._b/r2._c,r1._c/r2._c);
 }
 
@@ -59,7 +59,8 @@ ComplexVariable solver::operator- (const ComplexVariable& c1, const ComplexVaria
 }
 
 ComplexVariable solver::operator/ (const ComplexVariable& c1, const ComplexVariable& c2){
-    if(c2._a==ZERO_COMPLEX && c2._c==ZERO_COMPLEX && c2._b==ZERO_COMPLEX) throw runtime_error("Must not divide by 0");
+    if(c2._a==ZERO_COMPLEX && c2._c==ZERO_COMPLEX && c2._b==ZERO_COMPLEX)
+        throw runtime_error("ERROR: Must not divide by 0");
     return ComplexVariable(c1._a/c2._c,c1._b/c2._c,c1._c/c2._c);
 }
 
