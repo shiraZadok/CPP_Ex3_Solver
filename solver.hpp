@@ -29,12 +29,9 @@ public:
     friend RealVariable operator* (const RealVariable&, const RealVariable&);
     friend RealVariable operator^ (const RealVariable&, double);
     friend RealVariable operator== (const RealVariable& r1,const RealVariable& r2);
-
-     friend ostream& operator<< (ostream& os, const RealVariable& r) {
-         os << r._a << "x^2+" << r._b << "x+" << r._c;
-         return os;
-     }
     friend double solve(RealVariable r);
+    friend ostream& operator<< (ostream& os, const RealVariable& r){
+        return os << r._a << "x^2+" << r._b << "x+" << r._c; }
 };
 
 class solver::ComplexVariable{
@@ -52,10 +49,7 @@ public:
     friend ComplexVariable operator- (const ComplexVariable& ,const ComplexVariable&);
     friend ComplexVariable operator^ (const ComplexVariable& , double a);
     friend ComplexVariable operator== (const ComplexVariable& c1,const ComplexVariable& c2);
-
-    friend ostream& operator<< (ostream& os, const ComplexVariable& r) {
-        os << r._a << "x^2+" << r._b << "x+" << r._c;
-        return os;
-    }
     friend complex<double> solve(ComplexVariable c);
+    friend ostream& operator<< (ostream& os, const ComplexVariable& c) {
+        return os << c._a << "x^2+" << c._b << "x+" << c._c; }
 };
