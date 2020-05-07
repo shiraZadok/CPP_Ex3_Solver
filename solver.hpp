@@ -50,6 +50,6 @@ public:
     friend ComplexVariable operator^ (const ComplexVariable& , double a);
     friend ComplexVariable operator== (const ComplexVariable& c1,const ComplexVariable& c2);
     friend complex<double> solve(ComplexVariable c);
-    friend ostream& operator<< (ostream& os, const ComplexVariable& c) {
+    friend ostream& operator<< (ostream& os, const ComplexVariable& c){
         return os << c._a << "x^2+" << c._b << "x+" << c._c; }
 };
