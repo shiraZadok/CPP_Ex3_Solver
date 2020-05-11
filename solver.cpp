@@ -26,7 +26,7 @@ RealVariable solver::operator* (const RealVariable& r1, const RealVariable& r2){
 
 RealVariable solver::operator^ (const RealVariable& r, double d){
     if((d>2 && r._b!=0) || (d>=2&&r._a!=0)|| d==0)
-        throw runtime_error("ERROR: The power of the quadratic equation are more then 2");
+        throw runtime_error("ERROR: The power are more then 2");
     return RealVariable(pow(r._b,d),(2*r._b*r._c),pow(r._c,2));
 }
 
@@ -69,7 +69,7 @@ ComplexVariable solver::operator* (const ComplexVariable& c1, const ComplexVaria
 
 ComplexVariable solver::operator^ (const ComplexVariable& c, double d){
     if((d>2 && c._b!=ZERO_COMPLEX) || (d>=2&&c._a!=ZERO_COMPLEX) || d==0)
-        throw runtime_error("ERROR: The power of the quadratic equation are more then 2");
+        throw runtime_error("ERROR: The power are more then 2");
     return ComplexVariable(pow(c._b,d),(2.0*c._b*c._c),pow(c._c,2));
 }
 
