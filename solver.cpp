@@ -39,9 +39,9 @@ double solver::solve(RealVariable r) {
     if (r._a != 0){
         double discriminant = pow(r._b, 2) - 4 * r._a * r._c;
         if (discriminant < 0) throw runtime_error("ERROR: There is no real solution");
-        else return (-r._b + sqrt(discriminant)) / (2 * r._a);
+        return (-r._b + sqrt(discriminant)) / (2 * r._a);
     }
-    else return (-r._c)/r._b;
+    return (-r._c)/r._b;
 }
 
 ///////////////////////////////////////////////COMPLEX///////////////////////////////////////////////
