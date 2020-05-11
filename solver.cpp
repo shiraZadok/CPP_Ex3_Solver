@@ -21,11 +21,7 @@ RealVariable solver::operator/ (const RealVariable& r1, const RealVariable& r2){
 RealVariable solver::operator* (const RealVariable& r1, const RealVariable& r2){
     if((r1._a!=0&&(r2._a!=0||r2._b!=0)) || (r2._a!=0&&(r1._a!=0||r1._b!=0)))
         throw runtime_error("ERROR: The power of the quadratic equation are more then 2");
-    if (r1._a==0&&r1._b==0)
-        return RealVariable(r2._a*r1._c,r2._b*r1._c,r2._c*r1._c);
-    if (r2._a==0&&r2._b==0)
-        return RealVariable(r1._a*r2._c,r1._b*r2._c,r1._c*r2._c);
-    return RealVariable(r1._b*r2._b,r1._b*r2._c+r1._c*r2._b,r1._c*r2._c);
+    return RealVariable(r1._b*r2._b+r1._a*r2._c+r2._a*r1._c,r1._b*r2._c+r1._c*r2._b,r1._c*r2._c);
 }
 
 RealVariable solver::operator^ (const RealVariable& r, double d){
@@ -68,11 +64,7 @@ ComplexVariable solver::operator* (const ComplexVariable& c1, const ComplexVaria
     if((c1._a!=ZERO_COMPLEX&&(c2._a!=ZERO_COMPLEX||c2._b!=ZERO_COMPLEX)) ||
        (c2._a!=ZERO_COMPLEX&&(c1._a!=ZERO_COMPLEX||c1._b!=ZERO_COMPLEX)))
         throw runtime_error("ERROR: The power of the quadratic equation are more then 2");
-    if (c1._a==ZERO_COMPLEX&&c1._b==ZERO_COMPLEX)
-        return ComplexVariable(c2._a*c1._c,c2._b*c1._c,c2._c*c1._c);
-    if (c2._a==ZERO_COMPLEX&&c2._b==ZERO_COMPLEX)
-        return ComplexVariable(c1._a*c2._c,c1._b*c2._c,c1._c*c2._c);
-    return ComplexVariable(c1._b*c2._b,c1._b*c2._c+c1._c*c2._b,c1._c*c2._c);
+    return ComplexVariable(c1._b*c2._b+c1._a*c2._c+c2._a*c1._c,c1._b*c2._c+c1._c*c2._b,c1._c*c2._c);
 }
 
 ComplexVariable solver::operator^ (const ComplexVariable& c, double d){
